@@ -1,3 +1,5 @@
+# Time Complexity O(N)
+
 import unittest
 
 def urlify_string(str,real_length):
@@ -9,14 +11,11 @@ def urlify_string(str,real_length):
             space_count += 1
     index = real_length + (space_count*2)
 
-
     #converting to list as python strings are Immutable.
     #Also trimming the extra spae at the end of string
     str_list = list(str[:real_length])
-
     # Extending the list to accomadate %20 attributes that will be inseted
     str_list.extend(["" for _ in range(space_count*2)])
-
     # Insert %20 at spaces
     for i in reversed(range(real_length)):
         if str_list[i] == " ":
