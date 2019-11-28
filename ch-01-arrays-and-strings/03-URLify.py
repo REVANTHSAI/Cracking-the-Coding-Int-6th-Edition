@@ -1,5 +1,4 @@
 # Time Complexity O(N)
-
 import unittest
 
 def urlify_string(str,real_length):
