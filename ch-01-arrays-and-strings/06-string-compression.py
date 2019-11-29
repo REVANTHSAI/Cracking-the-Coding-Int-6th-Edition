@@ -4,11 +4,10 @@ def string_compression(string):
     compressed = []
     counter = 0
     for i in range(len(string)):
-        if i != 0 and string[i] != string[i-1]:
-            compressed.append(string[i-1]+str(counter))
-            counter = 0
         counter += 1
-    compressed.append(string[-1]+str(counter))
+        if i+1 >= len(string) or string[i] != string[i+1]:
+            compressed.append(string[i]+str(counter))
+            counter = 0
 
     return min(string,''.join(compressed),key=len)
 
