@@ -1,14 +1,17 @@
+# Time Complexity O(N)
 import unittest
 from collections import OrderedDict
 def string_compression(string):
     compressed = []
     counter = 0
+# Parses string and compares the consecutive charecters.
     for i in range(len(string)):
         counter += 1
+# Appends count when string sequence changes or at the end of the string
         if i+1 >= len(string) or string[i] != string[i+1]:
             compressed.append(string[i]+str(counter))
             counter = 0
-
+# Compares compressed string with the original string and returns the shorter string
     return min(string,''.join(compressed),key=len)
 
 
