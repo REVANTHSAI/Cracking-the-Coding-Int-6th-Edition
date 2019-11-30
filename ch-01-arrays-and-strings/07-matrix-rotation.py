@@ -11,16 +11,6 @@ def rotate_matrix(mat,rotate_clock_wise = True):
     else:
         return tranpose_matrix(matrix_mirror_image(mat))
 
-
-
-def rotate_matrix_counter_clockwise(mat):
-    if len(mat) == 0 or (len(mat) != len(mat[0])):
-        print('Not a valid matrix')
-        return
-
-    return tranpose_matrix(matrix_mirror_image(mat))
-
-
 def tranpose_matrix(mat):
     for i in range(len(mat[0])):
         for j in range(i,len(mat)):
