@@ -1,3 +1,4 @@
+import random
 class Node():
 
     def __init__(self,vlaue):
@@ -9,14 +10,30 @@ class LinkedList():
     def __init__(self):
         self.head = None
 
-#   Traversing the the LinkedList - Time Complexity - O(N)
-    def __print__(self):
+# Make the LinkedList Iterable
+    def __iter__(self):
         temp = self.head
-        if temp == None: return
+        if temp == None: yield temp
         while temp != None:
-            print(temp.value)
+            yield temp.value
             temp = temp.next
 
+    # Overload Length operator
+    def __len__(self):
+        result = 0
+        for _ in self:
+            result+=1
+        return result
+
+    def __str__(self):
+        values = [str(x) for x in self]
+        return ' -> '.join(values)
+
+
+    def generator(self,n,min_value,max_value):
+        for _ in range(n):
+             self.inset_at_end(random.randint(min_value,max_value))
+        return self
 
 #   Insert a Node at a Head - Time Complexity O(N)
     def insert_head(self,var):
@@ -85,14 +102,6 @@ class LinkedList():
 
 if __name__ == "__main__":
     ll = LinkedList()
-    ll.insert_head("H3")
-    ll.insert_head("E")
-    ll.inset_at_end("V")
-    ll.insert_head("H2")
-    ll.inset_at_end("A")
-    ll.insert_head("H1")
-    ll.inset_at_end("A")
-    ll.inset_at_position(1,"I")
-    ll.insert_before_item("H1","InsertedBefore")
-    ll.insert_after_item("H1","InsertedAfter")
-    ll.traverse_linkedList()
+    ll.generator(10,1,100)
+    print(ll)
+    print(len(ll))
