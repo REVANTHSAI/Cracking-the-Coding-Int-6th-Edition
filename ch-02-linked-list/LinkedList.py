@@ -100,8 +100,24 @@ class LinkedList():
             new_node.next = temp.next
             temp.next = new_node
 
+    def delete_node(self,position):
+        if position <= 0 or self.head == None:
+            return
+        if position == 1:
+            self.head = head.next
+        else:
+            temp = self.head
+            for _ in range(position-2):
+                temp = temp.next
+            temp.next = temp.next.next
+
 if __name__ == "__main__":
     ll = LinkedList()
+
     ll.generator(10,1,100)
+    print(ll)
+    print(len(ll))
+
+    ll.delete_node(3)
     print(ll)
     print(len(ll))
