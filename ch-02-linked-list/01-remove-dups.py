@@ -1,3 +1,5 @@
+# Time Complexity O(N^2)
+# Assumptions - Duplicates should be romoved without using any additional DS
 import unittest
 from linked_list import linked_list
 
@@ -15,6 +17,7 @@ def remove_dups_from_LL(ll):
         iter_pointer = iter_pointer.next
     return ll
 
+# Function that geneates a LL from a list
 def create_from_list(list_var):
     # Initating Linked list with first element of the list as head
     ll = linked_list()
@@ -28,8 +31,7 @@ class Test(unittest.TestCase):
 
     def test_main(self):
         for (test,result) in self.test_case:
-            test_list = create_from_list(test)
-            value = remove_dups_from_LL(test_list)
+            value = remove_dups_from_LL(create_from_list(test))
             expected_result = create_from_list(result)
             print(str(test),str(value))
             self.assertTrue(str(value),str(expected_result))
