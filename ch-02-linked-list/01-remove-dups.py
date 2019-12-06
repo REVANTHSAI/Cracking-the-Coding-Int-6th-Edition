@@ -1,20 +1,38 @@
-def remove_dups_from_LL(linked_list):
-    iter_pointer = linked_list.Head
-    runner_pointer = linked_list.Head.next
+import unittest
+from linked_list import linked_list
 
-    for i in range(len(linked_list)):
-        for j in range(i+1,len(linked_list)):
-            if iter_pointer.value == runner_pointer.value:
-                positon_of_duplicate = i+j
-                delete_node(positon_of_duplicate)
-            runner_pointer = runner_pointer.next
+def remove_dups_from_LL(ll):
+    if (ll==None or ll.head == None):
+        return
+    iter_pointer = ll.head
+    while(iter_pointer != None):
+        runner_pointer =  iter_pointer
+        while(runner_pointer.next != None):
+            if iter_pointer.value == runner_pointer.next.value:
+                runner_pointer.next = runner_pointer.next.next
+            else:
+                runner_pointer = runner_pointer.next
         iter_pointer = iter_pointer.next
+    return ll
 
-
-
-def create_from_list(list):
+def create_from_list(list_var):
     # Initating Linked list with first element of the list as head
-    ll = linked_list(list[0])
+    ll = linked_list()
     # Appending remaing elements to the list
-    for i in range(1,len(list)):
-        ll.inset_at_end(list[i])
+    for i in range(0,len(list_var)):
+        ll.inset_at_end(list_var[i])
+    return ll
+
+class Test(unittest.TestCase):
+    test_case = [((1,2,4,7,8,1,6,7,1,7,8,8),(1,2,4,7,8,6)),((2,4,4,91,81,91,99,0,0),(2,4,91,81,99,0)),((1,2,2,3,3,3,4,4,5,5),(1,2,3,4,5))]
+
+    def test_main(self):
+        for (test,result) in self.test_case:
+            test_list = create_from_list(test)
+            value = remove_dups_from_LL(test_list)
+            expected_result = create_from_list(result)
+            print(str(test),str(value))
+            self.assertTrue(str(value),str(expected_result))
+
+if __name__ == "__main__":
+    unittest.main()

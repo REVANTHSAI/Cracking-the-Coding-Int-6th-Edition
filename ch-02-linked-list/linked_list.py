@@ -1,4 +1,3 @@
-import random
 class node():
 
     def __init__(self,vlaue):
