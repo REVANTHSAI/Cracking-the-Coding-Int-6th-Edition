@@ -1,3 +1,4 @@
+import random
 class node():
 
     def __init__(self,vlaue):
@@ -99,6 +100,11 @@ class linked_list():
             new_node = node(data)
             new_node.next = temp.next
             temp.next = new_node
+
+    # Function that geneates a LL from a list
+    def insert_multiple(self,list_var):
+        for i in range(0,len(list_var)):
+            self.inset_at_end(list_var[i])
 
 # Function to delete a node at positon
     def delete_node(self,position):
