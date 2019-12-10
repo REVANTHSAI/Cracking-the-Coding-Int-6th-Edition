@@ -54,6 +54,7 @@ class linked_list():
             while temp.next != None:
                 temp = temp.next
             temp.next = node(var)
+        return temp.next
 
 #   Insert a node at a position - Time Complexity O(N)
     def inset_at_position(self,position,val):
