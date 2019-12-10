@@ -17,11 +17,10 @@ def isPalindrome(ll):
 
 # If the LL lengths is Odd then skip the middle element
 # if x and if x is not None are not the same!
-
     if fast_pointer:
         slow_pointer = slow_pointer.next
 
-# Compare values in the LL to the right half of the Linked List
+# Compare values in the stack to the right half of the Linked List
     while slow_pointer:
         top = stack.pop()
         if slow_pointer.value != top:
@@ -35,12 +34,14 @@ class Test(unittest.TestCase):
     test_case_pos = ((1,2,3,4,5,4,3,2,1),('T','E','S','S','E','T'),('c','i','v','i','c'),('r','a','c','e','c','a','r'))
     test_case_neg = ((1,2,3,4,5),('r','e','v','a','n','t','h'),('s','a','i'),('p','y','t','h','o','n','i','c'))
 
+# Positive Test Case
     def test_pos(self):
         for test in self.test_case_pos:
             ll = linked_list()
             ll.insert_multiple(list(test))
             self.assertTrue(isPalindrome(ll))
 
+# Negative Test Case
     def test_neg(self):
         for test in self.test_case_neg:
             ll = linked_list()
